@@ -214,7 +214,21 @@ Menores de 3 $0 </p>
     <script>
         AOS.init();
     </script>
-    
+     <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("myAudio");
+
+    // Escucha el primer scroll
+    const playOnScroll = () => {
+      audio.play().catch(e => {
+        console.warn("El navegador bloqueó la reproducción automática", e);
+      });
+      document.removeEventListener("scroll", playOnScroll); // Se ejecuta solo una vez
+    };
+
+    document.addEventListener("scroll", playOnScroll);
+  });
+</script>
     <script>
 
     function copyToClipboard(text) {
